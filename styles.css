@@ -1,0 +1,145 @@
+body {
+    margin: 20px;
+    background-color: black;
+}
+
+/* font */
+.home-score,
+.visitor-score,
+.min,
+.sec,
+.colon,
+.period-number,
+.home-fouls-num,
+.visitor-fouls-num {
+    font-family: 'Cursed Timer ULiL', sans-serif;
+}
+
+.colon {
+    font-size: 70px;
+}
+
+/* main */
+.main,
+.home-score,
+.visitor-score,
+.timer,
+.players-fouls {
+    border: solid 4px white;
+}
+
+.main,
+.players-fouls {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    border-radius: 5px;
+    border-top: solid 10px white;
+    border-bottom: solid 10px white;
+}
+
+/* home and visitor */
+.home,
+.home-bonus,
+.visitor,
+.visitor-bonus,
+.home-fouls,
+.visitor-fouls {
+    color: whitesmoke;
+}
+
+.home,
+.visitor,
+.middle {
+    text-align: center;
+}
+
+.home-score,
+.visitor-score,
+.home-fouls-num,
+.visitor-fouls-num {
+    text-align: right;
+}
+
+.home-score,
+.home-arrow,
+.visitor-score,
+.visitor-arrow {
+    color: red;
+}
+
+/* timer */
+.timer {
+    color: yellow;
+    padding: 2px 12px;
+    border-radius: 5px;
+}
+
+.min,
+.sec,
+.period-number,
+.home-fouls-num,
+.visitor-fouls-num {
+    border: 2px solid lightgrey;
+}
+
+.poss-period {
+    color: white;
+}
+
+/* .period-number {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    border-radius: 2px;
+} */
+
+/* .poss-period {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.period-number {
+    width: 20%;
+} */
+
+/* fouls */
+.players-fouls {
+    background: url('basketball.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.period-number,
+.home-fouls-num,
+.visitor-fouls-num {
+    color: rgb(65, 167, 65);
+}
+
+.period-number,
+.home-fouls-num,
+.visitor-fouls-num,
+.home-score,
+.visitor-score,
+.min,
+.sec {
+    font-size: 90px;
+}
+
+.home-fouls,
+.visitor-fouls {
+    margin-bottom: 0;
+}
+
+.home-fouls-num,
+.visitor-fouls-num,
+.home-score,
+.visitor-score {
+    margin-top: 0;
+}
+
+.bb-image {
+    width: 20%;
+}
