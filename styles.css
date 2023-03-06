@@ -62,10 +62,31 @@ body {
 }
 
 .home-score,
-.home-arrow,
-.visitor-score,
-.visitor-arrow {
+.visitor-score {
     color: red;
+}
+
+.home-arrow,
+.visitor-arrow  {
+    color:darkgrey;
+}
+
+.home-score-btn,
+.visitor-score-btn,
+.btn-class {
+    display: flex;
+}
+
+.btn-class {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+button,
+.home-bonus,
+.visitor-bonus {
+    cursor: pointer;
 }
 
 /* timer */
@@ -86,24 +107,6 @@ body {
 .poss-period {
     color: white;
 }
-
-/* .period-number {
-    position: absolute;
-    top: 120px;
-    left: 60px;
-    border-radius: 2px;
-} */
-
-/* .poss-period {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.period-number {
-    width: 20%;
-} */
 
 /* fouls */
 .players-fouls {
@@ -129,7 +132,9 @@ body {
 }
 
 .home-fouls,
-.visitor-fouls {
+.visitor-fouls,
+.home-score,
+.visitor-score {
     margin-bottom: 0;
 }
 
@@ -142,4 +147,22 @@ body {
 
 .bb-image {
     width: 20%;
+}
+
+.visitor-bonus-div {
+    margin-left: 40px;
+}
+.reset-btn,
+.start-btn,
+.play-btn,
+.pause-btn {
+    width: 100%;
+    background-color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.play-btn,
+.pause-btn {
+    display: none;
 }
