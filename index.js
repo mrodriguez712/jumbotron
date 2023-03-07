@@ -12,8 +12,8 @@ play.addEventListener('click', playGame)
 pause.addEventListener('click', pauseGame)
 reset.addEventListener('click', resetGame)
 
+
 function startGame() {
-    setInterval(updateCountdown, 1000)
     pause.style.display = 'block'
     start.style.display = 'none'
 }
@@ -26,6 +26,7 @@ function playGame() {
 function pauseGame() {
     play.style.display = 'block'
     pause.style.display = 'none'
+    pause_clock
 }
 
 function resetGame() {
@@ -42,11 +43,25 @@ function resetGame() {
     visitorArrow.style.color = 'darkgrey'
 
     // reset timer and button
-    min.textContent = '00'
-    sec.textContent = '00'
     start.style.display = 'block'
     play.style.display = 'none'
     pause.style.display = 'none'
+
+    // possesion
+    homeArrowPoss.style.color = 'darkgrey'
+    visitorArrowPoss.style.color = 'darkgrey'
+
+    // period
+    periodNumber = 0
+    period.textContent = periodNumber
+
+    // fouls
+    homeNumber = 0
+    homeFouls.textContent = homeNumber
+    homeFouls.style.pointerEvents = 'auto'
+    visitorNumber = 0
+    visitorFouls.textContent = visitorNumber
+    visitorFouls.style.pointerEvents = 'auto'
 }
 
 // scoring
@@ -119,7 +134,7 @@ function homePlusThree() {
 }
 
 function bonusHomeColor() {
-    if(homeArrow.style.color === 'red') {
+    if (homeArrow.style.color === 'red') {
         homeArrow.style.color = 'darkgrey'
     } else {
         homeArrow.style.color = 'red'
@@ -146,7 +161,7 @@ function visitorPlusThree() {
 }
 
 function bonusVisitorColor() {
-    if(visitorArrow.style.color === 'red') {
+    if (visitorArrow.style.color === 'red') {
         visitorArrow.style.color = 'darkgrey'
     } else {
         visitorArrow.style.color = 'red'
@@ -154,22 +169,66 @@ function bonusVisitorColor() {
 }
 
 // timer
-const startingMinutes = 12
-let time = startingMinutes * 60
+let timerEl = document.querySelector('.timer')
+let time_limit = 12
 
-const timerEl = document.querySelector('.timer')
 
-function updateCountdown() {
-    const minutes = Math.floor(time / 60)
-    let seconds = time % 60
 
-    seconds = seconds < 10 ? '0' + seconds : seconds
 
-    timerEl.innerHTML = 
-    `
-    <span class='min'>${minutes}</span>
-    <span class='colon'>:</span>
-    <span class='sec'>${seconds}</span>
-    `
-    time--
+// possession
+let homeArrowPoss = document.querySelector('.home-arrow-poss')
+let visitorArrowPoss = document.querySelector('.visitor-arrow-poss')
+
+homeArrowPoss.addEventListener('click', homePoss)
+visitorArrowPoss.addEventListener('click', visitorPoss)
+
+function homePoss() {
+    homeArrowPoss.style.color = 'red'
+    visitorArrowPoss.style.color = 'darkgrey'
 }
+
+function visitorPoss() {
+    homeArrowPoss.style.color = 'darkgrey'
+    visitorArrowPoss.style.color = 'red'
+}
+
+// period
+let period = document.querySelector('.period-number')
+periodNumber = 0
+
+period.addEventListener('click', () => {
+    periodNumber += 1
+
+    period.textContent = periodNumber
+
+    if (periodNumber >= 4) {
+        return periodNumber = 0
+    }
+})
+
+// fouls
+let homeFouls = document.querySelector('.home-fouls-num')
+let visitorFouls = document.querySelector('.visitor-fouls-num')
+
+homeNumber = 0
+visitorNumber = 0
+
+homeFouls.addEventListener('click', () => {
+    homeNumber += 1
+
+    homeFouls.textContent = homeNumber
+
+    if (homeNumber >= 72) {
+        homeFouls.style.pointerEvents = 'none'
+    }
+})
+
+visitorFouls.addEventListener('click', () => {
+    visitorNumber += 1
+
+    visitorFouls.textContent = visitorNumber
+
+    if (visitorNumber >= 72) {
+        visitorFouls.style.pointerEvents = 'none'
+    }
+})

@@ -3,6 +3,10 @@ body {
     background-color: black;
 }
 
+.page-container {
+    min-width: 800px;
+}
+
 /* font */
 .home-score,
 .visitor-score,
@@ -37,7 +41,6 @@ body {
     border-top: solid 10px white;
     border-bottom: solid 10px white;
 }
-
 /* home and visitor */
 .home,
 .home-bonus,
@@ -67,7 +70,9 @@ body {
 }
 
 .home-arrow,
-.visitor-arrow  {
+.home-arrow-poss,
+.visitor-arrow,
+.visitor-arrow-poss  {
     color:darkgrey;
 }
 
@@ -85,7 +90,12 @@ body {
 
 button,
 .home-bonus,
-.visitor-bonus {
+.visitor-bonus,
+.home-arrow-poss,
+.visitor-arrow-poss,
+.period-number,
+.home-fouls-num,
+.visitor-fouls-num {
     cursor: pointer;
 }
 
