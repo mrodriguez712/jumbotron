@@ -1,8 +1,8 @@
 // start, play, pause and reset
-let start = document.querySelector('.start-btn')
-let play = document.querySelector('.play-btn')
-let pause = document.querySelector('.pause-btn')
-let reset = document.querySelector('.reset-btn')
+const start = document.querySelector('.start-btn')
+const play = document.querySelector('.play-btn')
+const pause = document.querySelector('.pause-btn')
+const reset = document.querySelector('.reset-btn')
 
 let min = document.querySelector('.min')
 let sec = document.querySelector('.sec')
@@ -12,21 +12,73 @@ play.addEventListener('click', playGame)
 pause.addEventListener('click', pauseGame)
 reset.addEventListener('click', resetGame)
 
+// timer
 
+minute = "0" + 0
+second = "0" + 0
+isPaused = true
+
+function startInterval() {
+    intervalId = setInterval(() => {
+        if (!isPaused) {
+            document.getElementById('clockdiv').innerHTML =
+                `
+                <span class="min">${minute}</span>
+                <span class="colon">:</span>
+                <span class="sec">${second}</span>
+                `
+
+            if (minute != 0 && second == 0) {
+                second = 60
+                minute--
+            }
+            second--
+        }
+
+        if (second < 10 || second == 0) {
+            second = '0' + second
+        }
+        minute = minute.toString()
+        if (minute.length < 2) {
+            minute = '0' + minute
+        }
+
+        if (minute == 0 && second == 0) {
+            minute = "0" + 0
+            second = "0" + 0
+            clearInterval(intervalId)
+            isPaused = true
+        }
+    }, 1000);
+}
+
+function resumeClock() {
+    isPaused = false
+}
+
+function pauseClock() {
+    isPaused = true
+}
+
+// buttons
 function startGame() {
+    isPaused = false
     pause.style.display = 'block'
     start.style.display = 'none'
+    minute = 12
+    startInterval()
 }
 
 function playGame() {
     play.style.display = 'none'
     pause.style.display = 'block'
+    resumeClock()
 }
 
 function pauseGame() {
     play.style.display = 'block'
     pause.style.display = 'none'
-    pause_clock
+    pauseClock()
 }
 
 function resetGame() {
@@ -46,6 +98,16 @@ function resetGame() {
     start.style.display = 'block'
     play.style.display = 'none'
     pause.style.display = 'none'
+    isPaused = true
+    minute = '0' + 0
+    second = '0' + 0
+    document.getElementById('clockdiv').innerHTML =
+        `
+        <span class="min">${minute}</span>
+        <span class="colon">:</span>
+        <span class="sec">${second}</span>
+    `
+    clearInterval(intervalId)
 
     // possesion
     homeArrowPoss.style.color = 'darkgrey'
@@ -167,13 +229,6 @@ function bonusVisitorColor() {
         visitorArrow.style.color = 'red'
     }
 }
-
-// timer
-let timerEl = document.querySelector('.timer')
-let time_limit = 12
-
-
-
 
 // possession
 let homeArrowPoss = document.querySelector('.home-arrow-poss')
